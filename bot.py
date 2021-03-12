@@ -10,8 +10,8 @@ auth.set_access_token("2854605777-3euOzqd0W4f3eR8FE0YXRqANcpOW1gQtrjUinT7",
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 #Create a tweet
-def TweetInterval():
-    api.update_status("Test")
+def TweetInterval(tweet_):
+    api.update_status(tweet_)
     time.sleep(900) #Every 15 minutes
 
 #Get informaton about an user
@@ -25,4 +25,15 @@ def GetInformationAboutUser(user_name):
     print("Last followers")
     for follower in user.followers():
         print(follower.name)
+
+#Update the description of your account
+def UpdateDescription(desc):
+    api.update_profile(description=desc)
+
+
+#Get the last tweet in your timeline()
+def LastTweetInTimeline():
+    timeline = api.home_timeline()
+    for tweet in timeline:
+        print(f"{tweet.user.name} said {tweet.text}")
 
