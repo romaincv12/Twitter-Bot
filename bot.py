@@ -44,9 +44,18 @@ def LikeLastTweetInTimeline():
     print(f"Liking tweet {tweet.id} of {tweet.author.name}")
     api.create_favorite(tweet.id)
 
-#Like tweet where there is a predefined string in the tweet
+#Like tweet where there is a predefined string in the tweet, the 10 most recent
 def LikeTweetWithPredefinedString(pr_tweet):
     for tweet in api.search(q=pr_tweet, lang=fr, rpp=10):
         api.create_favorite(tweet.id)
 
+#Search tweet that contains a predefined words
+def FindTweetWithPredefinedWord(prs_tweet):
+    for tweet in api.search(q=pr_tweet, lang=fr, rpp=10):
+        print(f"{tweet.user.name}:{tweet.text}")
 
+#List the current world trend
+def ListTheTrends():
+    trends_result = api.trends_place(1) #1 Means worldwide
+    for trend in trends_result[0]["trends"]:
+        print(trend["name"])
