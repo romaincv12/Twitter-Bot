@@ -1,11 +1,15 @@
 import tweepy
+import time
 
 #Authenticate to twitter
-auth = tweepy.OAuthHandler("6z38xP3EE8KZ6uAyCnklAfZKZ",
-                            "NlNYEqCOpJDQ3I3NIexkXMELF3RTxsQLEiSBfsiojhiaHvhNe6")
-auth.set_access_token("2854605777-WCJpjK9W1G2Ab5a3oPNJGRAqEEyFGXOjeSflbRy", 
-                      "mz13qxaUsjicmCLUH3VxO3T186qmBNTlyluA7WldBlWLe")
+auth = tweepy.OAuthHandler("R4BrLxrDN6UXP0jG0TkxvlWJ6",
+                            "jFBVEqhm36810DVFHIIRaxlsq9TNxQLUyaaxmm1eSRQcyKKDnX")
+auth.set_access_token("2854605777-3euOzqd0W4f3eR8FE0YXRqANcpOW1gQtrjUinT7", 
+                      "OXNFRV25ymJrsSSgh7X7t8CpMOPrffHvqJtz9S4CKoQw9")
 #Create API Object
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 #Create a tweet
+def TweetInterval():
+    api.update_status("Test")
+    time.sleep(900) #Every 15 minutes
