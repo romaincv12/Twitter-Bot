@@ -37,3 +37,16 @@ def LastTweetInTimeline():
     for tweet in timeline:
         print(f"{tweet.user.name} said {tweet.text}")
 
+#Like the last tweet in your timeline
+def LikeLastTweetInTimeline():
+    tweets = api.home_timeline(count=1)
+    tweet = tweets[0]
+    print(f"Liking tweet {tweet.id} of {tweet.author.name}")
+    api.create_favorite(tweet.id)
+
+#Like tweet where there is a predefined string in the tweet
+def LikeTweetWithPredefinedString(pr_tweet):
+    for tweet in api.search(q=pr_tweet, lang=fr, rpp=10):
+        api.create_favorite(tweet.id)
+
+
