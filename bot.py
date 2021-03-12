@@ -13,3 +13,16 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 def TweetInterval():
     api.update_status("Test")
     time.sleep(900) #Every 15 minutes
+
+#Get informaton about an user
+def GetInformationAboutUser(user_name):
+    user = api.get_user(user_name)
+    print("User details:")
+    print(user.name)
+    print(user.description)
+    print(user.location)
+
+    print("Last followers")
+    for follower in user.followers():
+        print(follower.name)
+
